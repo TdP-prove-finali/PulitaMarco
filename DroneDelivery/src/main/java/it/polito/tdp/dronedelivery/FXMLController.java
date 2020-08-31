@@ -1,4 +1,4 @@
-package marcopulita.DroneDelivery;
+package it.polito.tdp.dronedelivery;
 
 import java.net.URL;
 import java.util.ResourceBundle;
