@@ -1,13 +1,12 @@
 package it.polito.tdp.dronedelivery.db;
 
 import java.sql.Connection;
-import java.util.List;
+
 
 import com.javadocmd.simplelatlng.LatLngTool;
 import com.javadocmd.simplelatlng.util.LengthUnit;
 
-import it.polito.tdp.dronedelivery.db.DBConnect;
-import it.polito.tdp.dronedelivery.db.DeliveryDAO;
+
 import it.polito.tdp.dronedelivery.model.Shipment;
 
 public class TestDAO {
