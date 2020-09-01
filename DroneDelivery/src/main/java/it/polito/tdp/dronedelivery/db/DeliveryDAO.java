@@ -23,7 +23,7 @@ public class DeliveryDAO {
 	public List<Shipment> getAllShipments(String city, Map<Integer, Shipment> idMap) {
 
 		final String sql = "SELECT REQID, Address, City, State, Zip, Latitude, Longitude " + 
-		                   "FROM delivery where City = ? ORDER BY City ASC";
+		                   "FROM delivery where City = ?   ORDER BY City ASC";  //"  +"and REQID IN (319,320,322,323)"+  "
 		List<Shipment> shipments = new ArrayList<Shipment>();
 
 		try {
