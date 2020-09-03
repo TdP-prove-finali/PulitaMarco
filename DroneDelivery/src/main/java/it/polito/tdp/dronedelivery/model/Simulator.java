@@ -17,19 +17,21 @@ public class Simulator {
 	private PriorityQueue<Event> queue = new PriorityQueue<>();
 
 	// Parametri di simulazione
-	private int sampleRate = 100;
+	private int sampleRate = 100; //definire totale sample e variazione a time slot: es 60% su 4 time slot, 15 a time slot sul time slot inserire % es +-33% tra 10 e 20
+	private int timeSlotVariability =30;
 	private int nDrones;
 	private Duration S_INT = Duration.of(30, ChronoUnit.MINUTES); // clock sampling interval
 	// private final LocalTime firstCollect = LocalTime.of(8, 30);
 	private final LocalTime startFlights = LocalTime.of(9, 00);
 	private final LocalTime stopFlights = LocalTime.of(18, 00);
-	private String city;
+	
 
 	// modello del mondo
 	private List<Drone> drones;
 
 	// valori da calcolare
 
+	private Set<Shipment> shipmentsAll = new HashSet<Shipment>();
 	private Set<Shipment> delivered = new HashSet<Shipment>();
 	private Set<Shipment> toDeliver = new HashSet<Shipment>();
 
@@ -39,9 +41,6 @@ public class Simulator {
 		this.nDrones = n;
 	}
 
-	public void setCity(String c) {
-		this.city = c;
-	}
 
 	public void setConnectionFrequency(Duration d) {
 		this.S_INT = d;
@@ -52,13 +51,17 @@ public class Simulator {
 
 	public void run() {
 
-		//this.dronesPaths.get(0);
+		/*this.dronesPaths.get(0);
 		
 		Model model = new Model();
-		model.graphBuilder("SAN FRANCISCO");
 		
-		System.out.println(model.vertexCount());
-		System.out.println(model.edgeCount());
+		String city = "SAN FRANCISCO";
+		
+		
+		
+		model.graphBuilder("SAN FRANCISCO"); */
+		
+
 		
 		//preparazione simulazione (mondo+coda eventi)
 	

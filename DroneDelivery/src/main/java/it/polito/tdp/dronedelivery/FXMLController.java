@@ -41,11 +41,12 @@ public class FXMLController implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("creating path");
-        label.setText("Sim started");
-		Simulator sim = new Simulator();
-		
-		sim.run() ;
+        String city = "DALLAS";
+    	System.out.println("Setting city:" + city);
+        //this set the city parameter variable and fill model.shipmentCitySet with the related shipments from the DB
+    	model.setCity(city); //convertire in initialize e chiamare setCity dal model.initialize(simulation parameters);
+        label.setText("Sim started for " + city);
+		model.run() ;
     }
     
     @Override
@@ -60,6 +61,7 @@ public class FXMLController implements Initializable {
 
     }  
     
+    //e'chiamata nella entrypoint
     public void setModel(Model model) {
     	this.model = model;
         

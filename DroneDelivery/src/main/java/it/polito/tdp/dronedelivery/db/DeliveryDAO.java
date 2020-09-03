@@ -18,6 +18,10 @@ import com.javadocmd.simplelatlng.util.LengthUnit;
 import it.polito.tdp.dronedelivery.model.Distance;
 import it.polito.tdp.dronedelivery.model.Shipment;
 
+/**
+ * @author Marco
+ *
+ */
 public class DeliveryDAO {
 
 
@@ -25,8 +29,6 @@ public class DeliveryDAO {
 
 		final String sql = "SELECT REQID, Address, City, State, Zip, Latitude, Longitude " + 
 		                   "FROM delivery where City = ?   ORDER BY City ASC";  //"  +"and REQID IN (319,320,322,323)"+  "
-
-		Set<Shipment> shipments = new HashSet<Shipment>();
 
 
 		try {
@@ -42,7 +44,6 @@ public class DeliveryDAO {
 				Shipment s = new Shipment(rs.getInt("REQID"), rs.getString("Address"),
 						rs.getString("City"), rs.getString("State"), rs.getInt("Zip"),
 						new LatLng(rs.getDouble("Latitude"), rs.getDouble("Longitude")));
-				shipments.add(s);
 				
 				idMap.put(s.getReqID(), s);
 				}
@@ -56,8 +57,14 @@ public class DeliveryDAO {
 			throw new RuntimeException("DB Connection Error!");
 		}
 
-		return shipments;
+		return new HashSet<>(idMap.values());
 	}
+	
+	/**
+	 * 
+	 * @param reqID The request ID that identify the Shipment
+	 * @return The single Shipment object identified by the reqID
+	 */
 	
 	public Shipment getShipment(int reqID) {
 
