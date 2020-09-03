@@ -1,12 +1,7 @@
 package it.polito.tdp.dronedelivery;
 
 import java.net.URL;
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
-
-import it.polito.tdp.dronedelivery.model.Model;
-import it.polito.tdp.dronedelivery.model.Simulator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,12 +10,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
-
 public class FXMLController implements Initializable {
     
-
-	private Model model;
-
+	
 	
 	//
 	
@@ -41,11 +33,8 @@ public class FXMLController implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("creating path");
-        label.setText("Sim started");
-		Simulator sim = new Simulator();
-		
-		sim.run() ;
+        System.out.println("You clicked me!");
+        label.setText("Hello World!");
     }
     
     @Override
@@ -57,12 +46,5 @@ public class FXMLController implements Initializable {
         gc.fillRect(50, 50, 100, 100);
         System.out.println("draw rectangle");
     	//
-
-    }  
-    
-    public void setModel(Model model) {
-    	this.model = model;
-        
-    }
-
+    }    
 }

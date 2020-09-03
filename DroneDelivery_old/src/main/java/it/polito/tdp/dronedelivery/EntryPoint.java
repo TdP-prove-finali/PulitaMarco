@@ -2,9 +2,6 @@ package it.polito.tdp.dronedelivery;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-
-import it.polito.tdp.dronedelivery.FXMLController;
-import it.polito.tdp.dronedelivery.model.Model;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,23 +20,15 @@ import javafx.stage.Stage;
 //
 
 
-
-
 public class EntryPoint extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
-        Parent root = loader.load();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
         
         Scene scene = new Scene(root,600,400);
         scene.getStylesheets().add("/styles/Styles.css");
         
-
-        Model model = new Model();
-        FXMLController controller = loader.getController();
-        controller.setModel(model);
-
                 
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
@@ -60,7 +49,8 @@ public class EntryPoint extends Application {
         launch(args);
     }
 
-    /*
+    //
+    
     private void drawShapes(GraphicsContext gc) {
         gc.setFill(Color.GREEN);
         gc.setStroke(Color.BLUE);
@@ -84,8 +74,8 @@ public class EntryPoint extends Application {
                           new double[]{210, 210, 240, 240}, 4);
     }
     
-    */
-
+    //
+    
     
     
     

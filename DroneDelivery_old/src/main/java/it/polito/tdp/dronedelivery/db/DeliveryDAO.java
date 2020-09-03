@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -21,13 +20,11 @@ import it.polito.tdp.dronedelivery.model.Shipment;
 public class DeliveryDAO {
 
 
-	public Set<Shipment> getAllShipments(String city, Map<Integer, Shipment> idMap) {
+	public List<Shipment> getAllShipments(String city, Map<Integer, Shipment> idMap) {
 
 		final String sql = "SELECT REQID, Address, City, State, Zip, Latitude, Longitude " + 
 		                   "FROM delivery where City = ?   ORDER BY City ASC";  //"  +"and REQID IN (319,320,322,323)"+  "
-
-		Set<Shipment> shipments = new HashSet<Shipment>();
-
+		List<Shipment> shipments = new ArrayList<Shipment>();
 
 		try {
 			Connection conn = DBConnect.getConnection();
@@ -86,14 +83,13 @@ public class DeliveryDAO {
 		return s;
 	}
 	
-	public Set<Distance> getDistances(String city, Map<Integer, Shipment> idMap) {
+	public List<Distance> getDistances(String city, Map<Integer, Shipment> idMap) {
 		
 		//Preparing the subset of objects to query. 
-		//This is not a user input. It's randomly generated picking a number of shipments defined 
-		//sampling rate, size might vary at each time slot.  
-		//As the length is variable PreparedStatement won't cache them optimally rebuilding each time.
-		//In this case I build the query setting the INT values directly in the string inside the IN statement.
-		//Different is the case of "city" field. This is a string and needs to be filtered.
+		//This is not a user input, safe to insert directly in the query as map keys are mandatory as INT. 
+		//The query is length variable so not cached optimally and need to be rebuilt each time
+		//In this case building the query changing directly the string for the IN statement.
+		//Different is the case of "city" field. This is a string and need to be filtered.
 		Set<Integer> vertexes = idMap.keySet();
 		String inStr="";
 		Iterator<Integer> v = vertexes.iterator();
@@ -113,7 +109,7 @@ public class DeliveryDAO {
 			               "AND d1.REQID < d2.REQID AND d1.REQID IN ("+inStr+") AND d2.REQID IN  ("+inStr+")"; 
 		
 		
-		Set<Distance> distances = new HashSet<Distance>();
+		List<Distance> distances = new ArrayList<Distance>();
 
 		try {
 			Connection conn = DBConnect.getConnection();

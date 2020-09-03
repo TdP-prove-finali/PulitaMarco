@@ -11,8 +11,6 @@ public class Shipment {
 	private int zip; 
 	private LatLng coords;
 	
-
-
 	public Shipment(int reqID, String address, String city, String state, int zip, LatLng coords) {
 		this.reqID = reqID;
 		this.address = address;
@@ -20,7 +18,6 @@ public class Shipment {
 		this.state = state;
 		this.zip = zip;
 		this.coords = coords;
-		
 	}
 
 	@Override
@@ -53,27 +50,6 @@ public class Shipment {
 		return coords;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + reqID;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Shipment other = (Shipment) obj;
-		if (reqID != other.reqID)
-			return false;
-		return true;
-	}
 
 }
 
