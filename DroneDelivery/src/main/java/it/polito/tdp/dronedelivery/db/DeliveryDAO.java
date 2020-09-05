@@ -127,7 +127,7 @@ public class DeliveryDAO {
 			PreparedStatement st = conn.prepareStatement(sql);
 			st.setString(1, city);
 			st.setString(2, city);
-			System.out.println(st);
+			//System.out.println(st);
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {

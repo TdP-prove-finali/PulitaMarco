@@ -6,7 +6,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.dronedelivery.model.Model;
-import it.polito.tdp.dronedelivery.model.Simulator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,9 +43,11 @@ public class FXMLController implements Initializable {
         String city = "DALLAS";
     	System.out.println("Setting city:" + city);
         //this set the city parameter variable and fill model.shipmentCitySet with the related shipments from the DB
-    	model.setCity(city); //convertire in initialize e chiamare setCity dal model.initialize(simulation parameters);
-        label.setText("Sim started for " + city);
+    	model.setCity(city); //spostare in initialize();
+        //initialize();
+    	label.setText("Sim started for " + city);
 		model.run() ;
+		System.out.println("");
     }
     
     @Override
