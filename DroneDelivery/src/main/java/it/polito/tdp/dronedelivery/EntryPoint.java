@@ -32,16 +32,17 @@ public class EntryPoint extends Application {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
         Parent root = loader.load();
         
-        Scene scene = new Scene(root,600,400);
+        Scene scene = new Scene(root,800,500);
         scene.getStylesheets().add("/styles/Styles.css");
         
 
         Model model = new Model();
         FXMLController controller = loader.getController();
         controller.setModel(model);
+        
 
                 
-        stage.setTitle("JavaFX and Maven");
+        stage.setTitle("Drone delivery simulator");
         stage.setScene(scene);
         stage.show();
     

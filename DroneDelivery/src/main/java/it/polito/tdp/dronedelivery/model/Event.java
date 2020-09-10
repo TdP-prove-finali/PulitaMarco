@@ -7,8 +7,7 @@ public class Event implements Comparable<Event>{
 	//definizione classe pubblica enumerazione
 	
 	public enum EventType {
-		NEW_COLLECT //, HAS_ASSIGNED, HAS_DELIVERED, BATTERY_TO_RECHARGE, BATTERY_CHARGED,
-		//WIND_STARTED, WIND_STOPPED, WIND_CHANGED
+		NEW_COLLECT 
 	}
 	
 	private LocalTime time;

@@ -16,7 +16,20 @@ public class Drone {
 	private List<Shipment> pathContainer;
 	private Set<Shipment> assigned; 
 	private int currentEnergy;
+	private int energyFactor;
 	
+	public int getEnergyFactor() {
+		return energyFactor;
+	}
+
+
+
+	public void setEnergyFactor(int energyFactor) {
+		this.energyFactor = energyFactor;
+	}
+
+
+
 	/**
 	 * @param batteryStatus remaining battery in KM 
 	 * @param maxBatteryRangeKM maxFlayableKM, standard model 20 (default), powered 35  
@@ -24,16 +37,24 @@ public class Drone {
 	
 	public Drone(int maxBatteryRangeKM) {
 		super();
-		if(maxBatteryRangeKM < 20) this.maxBatteryRangeKM = 20;
+		if(maxBatteryRangeKM < 40) this.maxBatteryRangeKM = 40;
 		this.maxBatteryRangeKM = maxBatteryRangeKM;
 		this.pathContainer = new ArrayList<Shipment>();
 		this.assigned = new HashSet<Shipment>();
-		this.currentEnergy = maxBatteryRangeKM / 4;
+		this.energyFactor = 12;
+		this.currentEnergy = maxBatteryRangeKM / energyFactor; //the standard drone is fully charged after 3 time intervals. 
+				//System.out.println("Drone energy: " + this.currentEnergy);
 	}
 
-
-
-	public void setCurrentEnergy(int energy) { // used with negative numbers to drain the battery
+	public int getMaxEnergy() {
+		return this.maxBatteryRangeKM / this.energyFactor;
+	}
+	
+	public int getUsedEnergy() {
+		return (this.maxBatteryRangeKM / this.energyFactor) - this.currentEnergy;
+	}
+	
+	public void setCurrentEnergy(int energy) { 
 		this.currentEnergy = energy;
 	}
 	
@@ -43,7 +64,7 @@ public class Drone {
 
 
 
-	public double getMaxBatteryRangeKM() {
+	public int getMaxBatteryRangeKM() {
 		return maxBatteryRangeKM;
 	}
 	
