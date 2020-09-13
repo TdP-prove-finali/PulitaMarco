@@ -11,7 +11,15 @@ public class Shipment {
 	private int zip; 
 	private LatLng coords;
 	
-
+	/**
+	 * 
+	 * @param reqID the shipment ID, used to identify the object
+	 * @param address
+	 * @param city
+	 * @param state
+	 * @param zip
+	 * @param coords the coordinates as LatLng object
+	 */
 
 	public Shipment(int reqID, String address, String city, String state, int zip, LatLng coords) {
 		this.reqID = reqID;
@@ -21,12 +29,6 @@ public class Shipment {
 		this.zip = zip;
 		this.coords = coords;
 		
-	}
-
-	@Override
-	public String toString() {
-		return "Shipment [reqID=" + reqID + ", address=" + address + ", city=" + city + ", state=" + state + ", zip="
-				+ zip + ", coords=" + coords + "]";
 	}
 
 	public int getReqID() {
@@ -75,6 +77,11 @@ public class Shipment {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "[reqID: " + reqID + " - " + address + ", " + zip + " " + city + "]";
+	}
+	
 }
 
 

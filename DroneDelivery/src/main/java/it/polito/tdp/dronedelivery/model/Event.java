@@ -3,15 +3,12 @@ package it.polito.tdp.dronedelivery.model;
 import java.time.LocalTime;
 
 public class Event implements Comparable<Event>{
-
-	//definizione classe pubblica enumerazione
 	
 	public enum EventType {
-		NEW_COLLECT 
+		NEW_COLLECT, LAST_DELIVERY 
 	}
 	
 	private LocalTime time;
-	
 	private EventType type;
 
 	/**

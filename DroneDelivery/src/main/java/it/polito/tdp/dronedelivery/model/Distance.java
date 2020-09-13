@@ -1,10 +1,18 @@
 package it.polito.tdp.dronedelivery.model;
 
 public class Distance {
+
 	
 	public Integer obj1;
 	public Integer obj2;
 	public Double weight;
+	
+	/**
+	 * Generic distance object
+	 * @param obj1 as LatLng object
+	 * @param obj2 as LatLng object
+	 * @param weight distance between obj1 and obj2
+	 */
 	
 	public Distance(Integer obj1, Integer obj2, double weight) {
 		super();

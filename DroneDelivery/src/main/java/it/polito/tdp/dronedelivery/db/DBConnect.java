@@ -25,8 +25,7 @@ public class DBConnect {
 			ds.setJdbcUrl(jdbcURL);
 			ds.setUsername("root");
 			ds.setPassword("root");
-
-			// configurazione MySQL
+			// DB Settings
 			ds.addDataSourceProperty("cachePrepStmts", "true");
 			ds.addDataSourceProperty("prepStmtCacheSize", "250");
 			ds.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
@@ -38,7 +37,7 @@ public class DBConnect {
 			return ds.getConnection();
 
 		} catch (SQLException e) {
-			System.err.println("Errore connessione al DB");
+			System.err.println("DB connection error");
 			throw new RuntimeException(e);
 		}
 	}

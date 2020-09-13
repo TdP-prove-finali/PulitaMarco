@@ -2,9 +2,18 @@ package it.polito.tdp.dronedelivery.model;
 
 public class City {
 
+
+	
 	public String cityName;
 	public Shipment warehouse;
 	public int availableShipments;
+	
+	/**
+	 * Models a City object
+	 * @param name of the city
+	 * @param warehouse details as {@code Shipment} object
+	 * @param numShipments available shipments in database
+	 */
 	
 	public City (String name, Shipment warehouse, int numShipments) {
 		this.cityName = name;
