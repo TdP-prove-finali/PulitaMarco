@@ -261,7 +261,6 @@ public class Model {
 		this.collectEventsNumber = this.queue.size();
 
 		appendCommon("There are "+this.collectEventsNumber+" Events");
-		appendCommon("Average delivery number per event: " + ((int) (this.initialToDeliverSize/(this.collectEventsNumber -1) )));
 
 		//executing simulation polling events queue
 		while(!this.queue.isEmpty()) {
@@ -284,9 +283,10 @@ public class Model {
 	private void processEvent(Event e) {
 
 		int toDeliverNumber;
+		/*toDeliverNumber = (int) Math.round(((( this.timeslotVariability / 100.0 ) * 
+				( Math.random() - 0.5) * 2.0  ) + 1.0) * (this.initialToDeliverSize/(this.collectEventsNumber -1) ) );*/
 		toDeliverNumber = (int) Math.round(((( this.timeslotVariability / 100.0 ) * 
-				( Math.random() - 0.5) * 2.0  ) + 1.0) * (this.initialToDeliverSize/(this.collectEventsNumber -1) ) );
-
+		( Math.random() - 0.5) * 2.0  ) + 1.0) * (this.toDeliverMap.size()/(this.queue.size()+1) ) );
 		String eventLog = ("\n"+ e + "\nAvailable Shipments in this time slot: "+toDeliverNumber+", avg: "+(this.initialToDeliverSize/this.collectEventsNumber));
 		appendAll(eventLog);
 
@@ -441,7 +441,7 @@ public class Model {
 				//recharge the drone battery
 				this.drones.get(i).setCurrentEnergy(this.drones.get(i).getCurrentEnergy() + 1);
 				this.drones.get(i).setTimeslotsInCharge(this.drones.get(i).getTimeslotsInCharge() + 1);
-				this.drones.get(i).getAssigned().clear();
+				//this.drones.get(i).getAssigned().clear();
 
 			}
 

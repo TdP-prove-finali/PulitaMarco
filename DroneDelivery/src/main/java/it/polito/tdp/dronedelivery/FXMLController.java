@@ -245,24 +245,6 @@ public class FXMLController  {
 		if(dropfrom.valueProperty() != null) dropfrom.valueProperty().set("");
 		if(dropto.valueProperty() != null) dropto.valueProperty().set("");
 		
-		/*List<Integer> collectIntervals = new ArrayList<Integer>(); 
-		collectIntervals.add(30); 
-		collectIntervals.add(60); 
-		collectIntervals.add(120); 		
-		List<String> collectStart = new ArrayList<String>(); 
-		collectStart.add("8:00"); 
-		collectStart.add("9:30"); 
-		collectStart.add("9:00"); 
-		List<String> collectEnd = new ArrayList<String>(); 
-		collectEnd.add("17:00"); 
-		collectEnd.add("17:30"); 
-		collectEnd.add("18:00"); 
-		dropInterval.getItems().clear();
-		dropInterval.getItems().addAll(collectIntervals);
-		dropfrom.getItems().clear();
-		dropfrom.getItems().addAll(collectStart);
-		dropto.getItems().clear();
-		dropto.getItems().addAll(collectEnd);*/
 		model.initDrones();
 		sliderate.setValue(100.0);
 		slidevar.setValue(30.0);
